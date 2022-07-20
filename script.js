@@ -5,38 +5,53 @@ let computerScore = 0
 function getComputerChoice(){
     let choices = ['rock', 'paper', 'scissors']
     return choices[Math.floor(Math.random() * choices.length)]
-     
 }
 
 
 
 function playRound(playerSelection, computerSelection){
-    
-    if(playerSelection === computerSelection){
-        return "it's a draw! Try again!"
-    } else if(playerSelection === 'paper' && computerSelection === 'rock' || 
-              playerSelection === 'rock' && computerSelection === 'scissors' ||
-              playerSelection === 'scissors' && computerSelection === 'paper'){
-                    playerScore += 1
-                    return `You win! ${playerSelection} beats ${computerSelection}.`
-                }
-                computerScore += 1 
-                return `You lose! ${computerSelection} beats ${playerSelection}.`
-                
+
+    while(playerScore < 5 && computerScore < 5){
+
+        if(playerSelection === computerSelection){
+            return "it's a draw! Try again!"
+        } else if(playerSelection === 'paper' && computerSelection === 'rock' || 
+                    playerSelection === 'rock' && computerSelection === 'scissors' ||
+                    playerSelection === 'scissors' && computerSelection === 'paper'){
+                        playerScore += 1
+                        return `You win! ${playerSelection} beats ${computerSelection}.`
+        }else {
+            computerScore += 1
+            return `You lose! ${computerSelection} beats ${playerSelection}.`      
+
+        }
+
+    }
+
+    if(playerScore === 5){
+        return 'Congrats! You beat the computer!'
+    } else {
+        return 'Unlucky! You got beat by the computer!'
+    }
 }
 
 
 
-
 function game(){
-   for(let i = 0; i < 5; i++){
+    const gameBtns = document.querySelectorAll('.game-btn')
+    const gameInfo = document.querySelector('.gameInfo')
+    const scores = document.querySelector('.gameScores')
 
-    const player = prompt('Pick either, rock, paper or scissors').toLowerCase()
-    const computer = getComputerChoice()
+    gameBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const player = btn.textContent
+            const computer = getComputerChoice()
 
-    console.log(playRound(player, computer))
-    console.log(`Player Score: ${playerScore} | Computer Score: ${computerScore}`)
-   }
+            gameInfo.textContent = playRound(player, computer)
+            scores.textContent = `Player Score: ${playerScore} VS Computer Score: ${computerScore}`
+
+        })
+    })
 }
 
 game()

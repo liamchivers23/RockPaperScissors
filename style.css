@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+
+
+body{
+    font-family: 'Poppins', sans-serif;
+}
+
+.gameInfo {
+    text-align: center;
+    padding: 2rem;
+    font-size: 3rem;
+
+}
+
+.gameScores {
+    text-align: center;
+    padding: 2rem;
+    font-size: 3rem;
+
+}
+
+.gameButtons {
+    display: flex;
+    justify-content: space-evenly;
+    padding-top: 3rem;
+}
+
+.gameButtons > .game-btn {
+    padding: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5rem;
+}
