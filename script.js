@@ -1,6 +1,9 @@
+const gameBtns = document.querySelectorAll('.game-btn')
+const gameInfo = document.querySelector('.gameInfo')
+const scores = document.querySelector('.gameScores')
+
 let playerScore = 0
 let computerScore = 0
-
 
 function getComputerChoice(){
     let choices = ['rock', 'paper', 'scissors']
@@ -11,8 +14,7 @@ function getComputerChoice(){
 
 function playRound(playerSelection, computerSelection){
 
-    while(playerScore < 5 && computerScore < 5){
-
+    if(playerScore < 5 && computerScore < 5){
         if(playerSelection === computerSelection){
             return "it's a draw! Try again!"
         } else if(playerSelection === 'paper' && computerSelection === 'rock' || 
@@ -23,24 +25,22 @@ function playRound(playerSelection, computerSelection){
         }else {
             computerScore += 1
             return `You lose! ${computerSelection} beats ${playerSelection}.`      
-
+    
         }
-
-    }
-
-    if(playerScore === 5){
-        return 'Congrats! You beat the computer!'
+    } else if(playerScore === 5){
+        return 'Congrats! You beat the computer'
     } else {
-        return 'Unlucky! You got beat by the computer!'
+        return 'Thats unfortunate. The computer beat you!'
     }
+
+  
+
 }
 
 
 
 function game(){
-    const gameBtns = document.querySelectorAll('.game-btn')
-    const gameInfo = document.querySelector('.gameInfo')
-    const scores = document.querySelector('.gameScores')
+
 
     gameBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -55,4 +55,5 @@ function game(){
 }
 
 game()
+
 
