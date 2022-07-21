@@ -51,6 +51,19 @@ body{
 
 
 @media (max-width: 490px) {
+    .gameInfo {
+        text-align: center;
+        padding: 2rem;
+        font-size: 2rem;
+    
+    }
+    
+    .gameScores {
+        text-align: center;
+        padding: 2rem;
+        font-size: 2rem;
+    
+    }
     .gameButtons {
         display: flex;
         flex-direction: column;
