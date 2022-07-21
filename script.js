@@ -28,13 +28,23 @@ function playRound(playerSelection, computerSelection){
 function game(){
     gameBtns.forEach(btn => {
         btn.addEventListener('click', () => {
-            if(playerScore >= 5 || computerScore >= 5){
-                return 
-            }
             const player = btn.textContent
             const computer = getComputerChoice()
-
             gameInfo.textContent = playRound(player, computer)
+
+            if(playerScore === 5){
+                scores.textContent = `Congratulations! You beat the computer ${playerScore} to ${computerScore}`
+                gameBtns.forEach(btn => {
+                    btn.disabled = true
+                })
+                return 
+            } else if(computerScore === 5){
+                scores.textContent = `NOOOOO!! You lost to the computer. THE MACHINES ARE TAKING OVERR D:`
+                gameBtns.forEach(btn => {
+                    btn.disabled = true
+                })
+                return 
+            }
             scores.textContent = `Player Score: ${playerScore} VS Computer Score: ${computerScore}`
         })
     })
