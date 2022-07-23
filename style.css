@@ -6,6 +6,10 @@
     box-sizing: border-box;
 }
 
+.hidden {
+    display: none;
+}
+
 
 body{
     font-family: 'Poppins', sans-serif;
@@ -49,6 +53,19 @@ body{
     border-radius: 1rem;
 }
 
+.newGame-container {
+    padding: 1rem;
+    text-align: center;
+}
+
+.newGameBtn{
+    padding: 2rem;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 1.5rem;
+    cursor: pointer;
+    border-radius: 1rem;
+}
 
 @media (max-width: 490px) {
     .gameInfo {

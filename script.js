@@ -1,6 +1,7 @@
 const gameBtns = document.querySelectorAll('.game-btn')
-const gameInfo = document.querySelector('.gameInfo')
+let gameInfo = document.querySelector('.gameInfo')
 const scores = document.querySelector('.gameScores')
+const newGame = document.querySelector('.newGameBtn')
 
 let playerScore = 0
 let computerScore = 0
@@ -25,6 +26,23 @@ function playRound(playerSelection, computerSelection){
     }
 }
 
+function startNewGame(){
+    newGame.addEventListener('click', () => {
+        scores.textContent = ''
+        newGame.classList.toggle('hidden')
+        playerScore = 0
+        computerScore = 0
+        gameInfo.textContent = ''
+
+        gameBtns.forEach(btn => {
+            btn.classList.toggle('hidden')
+        })
+
+        
+    })
+}
+startNewGame()
+
 function game(){
     gameBtns.forEach(btn => {
         btn.addEventListener('click', () => {
@@ -34,15 +52,24 @@ function game(){
 
             if(playerScore === 5){
                 scores.textContent = `Congratulations! You beat the computer ${playerScore} to ${computerScore}`
+
                 gameBtns.forEach(btn => {
-                    btn.disabled = true
+                    btn.classList.toggle('hidden')
+                    
                 })
+
+                newGame.classList.toggle('hidden')
+
                 return 
             } else if(computerScore === 5){
                 scores.textContent = `NOOOOO!! You lost to the computer. THE MACHINES ARE TAKING OVERR D:`
                 gameBtns.forEach(btn => {
-                    btn.disabled = true
+                    btn.classList.toggle('hidden')
+                    
                 })
+
+                newGame.classList.toggle('hidden')
+
                 return 
             }
             scores.textContent = `Player Score: ${playerScore} VS Computer Score: ${computerScore}`
